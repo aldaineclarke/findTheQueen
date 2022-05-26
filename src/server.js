@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const http = require("http");
 const User = require("./user.model");
-
+const path = require("path")
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
@@ -10,6 +10,12 @@ const io = new Server(server, {
         origin: "*"
     }
 });
+
+app.use(express.static(path.join(__dirname,"../dist/client")));
+
+app.get("/", (req, res)=>{
+    res.sendFile("index.html",{root: path.join(__dirname,"../dist/client")})
+})
 
 let connectedSockets = 0;
 let users = [

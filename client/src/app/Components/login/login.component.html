@@ -1,0 +1,20 @@
+<section>
+    <form #loginForm="ngForm" (submit)="validateForm(loginForm)">
+        <legend>Login</legend>
+        <div class="errors">
+            <span *ngIf="loginForm.invalid">Invalid Credentials</span>
+        </div>
+        <label>
+            <span>Username</span>
+            <input type="text" ngModel name="username">
+        </label>
+        <label>
+            <span>Password</span>
+            <input type="password" ngModel name="password">
+        </label>
+        <button type="submit">Login</button>
+    </form>
+    <!-- <button (click)="logoff()">Disconnect</button> -->
+</section>
+
+

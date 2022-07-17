@@ -1,0 +1,15 @@
+<section class="gameplay">
+    <div class="card-grid" #cardGrid [class.animateCards]="_userService.currentPlayerTurn">
+        <div #card class="card" id="1" (click)="makeChoice(1)"></div>
+        <div #card class="card" id="2"(click)="makeChoice(2)"></div>
+        <div #card class="card" id="3"(click)="makeChoice(3)"></div>
+    </div>
+    <!-- <form #selectionForm="ngForm" (submit)="submitChoice(choice)">
+        <label>
+            <span *ngIf="'isDealer'">Where is the Queen hidden?</span>
+            <input type="number" name="selectedNumber" #choice ngModel max="3" min="1">
+        </label>
+        <button type="submit">Submit Choice</button>
+    </form> -->
+</section>
+

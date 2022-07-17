@@ -1,0 +1,56 @@
+<!-- <app-home></app-home> -->
+
+<app-login *ngIf="!startGame" (userConnected)="connectUser($event)"></app-login>
+<section>
+    
+    <div  *ngIf="startGame && !gameOver">
+
+        <h1 class="gameTitle">Finding the Queen</h1>
+        <h2 class="turn">Turn: {{turn}}</h2>
+        <div class="playerInfo">
+            <div>
+                <p class="title">Player: <span class="data">{{_userService.currentUser.name}}</span></p> 
+                <p  class="title">Score:<span class="data">{{_userService.currentUser.score}}</span></p>
+            </div>
+            <p class="title">Status: 
+                <span class="data">
+                    <span *ngIf="_userService.currentUser.isDealer">Dealer</span>
+                    <span *ngIf="!_userService.currentUser.isDealer">Spotter</span>
+                </span>
+            </p>
+            
+            <p class="center">
+                <span *ngIf="_userService.currentUser.isDealer">Where should we hide the queen?</span>
+                <span *ngIf="!_userService.currentUser.isDealer">Where is the Queen hidden?</span>
+            </p>
+        </div>
+</div>
+<app-game (choice)="chozenNumber($event)" *ngIf="startGame && !gameOver">
+    
+</app-game>
+<div *ngIf="gameOver" class=" gameOverScreen">
+    <p *ngIf="isWinner" class="scaleUpAnimation">Victory</p>
+    <p *ngIf="!isWinner" class="scaleUpAnimation">Defeat</p>
+
+    <div class=" scaleUpAnimation scoreBoard">
+        <div class="player" *ngFor="let player of _userService.validUsers">
+            <span class="name"> {{(player.name == _userService.currentUser.name)? "You" : player.name}}</span>
+            <span class="score">{{player.score}}</span>
+        </div>
+    </div>
+
+    <button (click)="restartGame()" class="btn-fill">
+        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.75 8a4.5 4.5 0 0 1-8.61 1.834l-1.391.565A6.001 6.001 0 0 0 14.25 8 6 6 0 0 0 3.5 4.334V2.5H2v4l.75.75h3.5v-1.5H4.352A4.5 4.5 0 0 1 12.75 8z"/></svg></span>
+        <span>Restart Game</span></button>
+
+</div>
+
+<div *ngIf="waiting" class="loading">
+    <div class="lds-facebook">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <p *ngIf="waitingMessage">{{waitingMessage}}</p>
+</div>
+</section>

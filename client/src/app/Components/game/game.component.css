@@ -1,0 +1,73 @@
+.gameplay{
+
+}
+.card-grid{
+    justify-content: center;;
+    display: flex;
+    height: 200px;
+    gap: 2rem;
+    margin: 2rem;
+}
+.card{
+    background-image: repeating-linear-gradient(140deg, hsla(295,0%,82%,0.12) 0px,transparent 2px,hsla(295,0%,82%,0.12) 7px,transparent 9px,hsla(295,0%,82%,0.12) 14px),repeating-linear-gradient(38deg, hsla(295,0%,82%,0.12) 0px,transparent 2px,hsla(295,0%,82%,0.12) 7px,transparent 9px,hsla(295,0%,82%,0.12) 14px),repeating-linear-gradient(0deg, hsla(295,0%,82%,0.15) 0px, hsla(295,0%,82%,0.15) 0px,transparent 0px, transparent 1px,hsla(295,0%,82%,0.15) 1px, hsla(295,0%,82%,0.15) 4px,transparent 4px, transparent 5px,hsla(295,0%,82%,0.15) 5px, hsla(295,0%,82%,0.15) 8px),repeating-linear-gradient(90deg, hsla(295,0%,82%,0.15) 0px, hsla(295,0%,82%,0.15) 0px,transparent 0px, transparent 1px,hsla(295,0%,82%,0.15) 1px, hsla(295,0%,82%,0.15) 4px,transparent 4px, transparent 5px,hsla(295,0%,82%,0.15) 5px, hsla(295,0%,82%,0.15) 8px),linear-gradient(90deg, rgb(0,128,128),rgb(0,128,128));
+    border-radius: 10px;
+    width: 150px;
+    cursor: pointer;
+    transition: box-shadow 300ms ease-in-out;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.card:hover{
+    box-shadow: 1px 2px 6px 3px rgba(0, 0, 0, 0.2);
+}
+.animateCards div{
+    animation-name: spin;
+    animation-duration: 3000ms;
+    animation-timing-function:ease-in-out;
+    animation-fill-mode: forwards;
+}
+.flipCard{
+    animation-name: flip;
+    animation-duration: 1000ms;
+    animation-timing-function:ease-in-out;
+    animation-fill-mode: forwards;
+}
+.flipCard-queen{
+    animation-name: flip-queen;
+    animation-duration: 1000ms;
+    animation-timing-function:ease-in-out;
+    animation-fill-mode: forwards;
+}
+.flipCard-joker{
+    animation-name: flip-joker;
+    animation-duration: 1000ms;
+    animation-timing-function:ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes spin {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(4turn);
+    }
+}
+@keyframes flip-queen {
+    0%{
+        transform: rotateY(0);
+    }
+    100%{
+        background-image: url("/assets/queen.png");
+        transform: rotateY(.5turn);
+    }
+}
+@keyframes flip-joker {
+    0%{
+        transform: rotateY(0);
+    }
+    100%{
+        background-image: url("/assets/joker.png");
+        transform: rotateY(.5turn);
+    }
+}
